@@ -1,44 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "../utils.h"
 
 int main(void) 
 {
-    float bus_ticket_price;
-    float taxi_trip_price;
-    float money_amount;
-
-    printf("Enter price of bus ticket: ");
-    while (scanf("%f", &bus_ticket_price) != 1)
-    {
-        printf("Invalid input\n");
-        printf("Enter price of bus ticket: ");
-        while (getchar() != '\n');
-    }
-
-    printf("Enter price of taxi: ");
-    while (scanf("%f", &taxi_trip_price) != 1)
-    {
-        printf("Invalid input\n");
-        printf("Enter price of taxi: ");
-        while (getchar() != '\n');
-    }
-
-    printf("How much money you have: ");
-    while (scanf("%f", &money_amount) != 1)
-    {
-        printf("Invalid input\n");
-        printf("How much money you have: ");
-        while (getchar() != '\n');
-    }
+    float bus_ticket_price = validate_float_input("Enter price of bus ticket: ");
+    float taxi_trip_price = validate_float_input("Enter price of taxi: ");
+    float money_amount = validate_float_input("How much money you have: ");
 
     while (money_amount >= bus_ticket_price || money_amount >= taxi_trip_price)
     {
         int* selected_form_of_transportation = (int*)malloc(sizeof(int));
 
-        printf("\nYou have %2.f money left", money_amount);
+        printf("\nYou have %.2f money left", money_amount);
         printf("\nDo you wan to take");
-        printf("\n1) bus (%2.f)", bus_ticket_price);
-        printf("\n2) taxi (%2.f)\n", taxi_trip_price);
+        printf("\n1) bus (%.2f)", bus_ticket_price);
+        printf("\n2) taxi (%.2f)\n", taxi_trip_price);
 
         while (*selected_form_of_transportation !=1 && *selected_form_of_transportation != 2)
         {
@@ -52,22 +29,22 @@ int main(void)
         
         if (*selected_form_of_transportation == 1 && money_amount >= bus_ticket_price)
         {
-            printf("You chose bus");
+            printf("You chose bus\n");
             money_amount -= bus_ticket_price;
         }
         else if (*selected_form_of_transportation == 1)
         {
-            printf("You dont have enough money for bus");
+            printf("You dont have enough money for bus\n");
         }
 
         if (*selected_form_of_transportation == 2 && money_amount >= taxi_trip_price)
         {
-            printf("You chose taxi");
+            printf("You chose taxi\n");
             money_amount -= taxi_trip_price;
         }
         else if (*selected_form_of_transportation == 2)
         {
-            printf("You dont have enough money for taxi");
+            printf("You dont have enough money for taxi\n");
         }
 
         free(selected_form_of_transportation);
