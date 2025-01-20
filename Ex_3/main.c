@@ -19,7 +19,7 @@ int main(void)
         if (student_number == -1)
         {
             char student_number_q[100];
-            sprintf(student_number_q, "\nEnter student number (1 - %d) or 0 to stop: ", student_amount);
+            snprintf(student_number_q, sizeof(student_number_q), "\nEnter student number (1 - %d) or 0 to stop: ", student_amount);
 
             student_number = validate_int_input(student_number_q);
 
@@ -33,17 +33,20 @@ int main(void)
         }
         
         char student_grade_q[100];
-        sprintf(student_grade_q, "Enter grade (0 - 5) for student %d or -1 to cancel: ", student_number);
+        snprintf(student_grade_q, sizeof(student_grade_q), "Enter grade (0 - 5) for student %d or -1 to cancel: ", student_number);
 
         int student_grade = validate_int_input(student_grade_q);
 
-        if (student_grade > 5)
+        if (student_grade > 0 && student_grade <= 5)
+        {
+            students_array[student_number - 1] = student_grade;
+        }
+        else if (student_grade > 5)
         {
             printf("Invalid grade!\n");
             continue;
         }
 
-        students_array[student_number - 1] = student_grade;
         student_number = -1;
     }
 
