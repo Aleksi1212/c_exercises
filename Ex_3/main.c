@@ -1,19 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include "../utils.h"
 
 int main(void)
 {
     int student_amount = validate_int_input("How many students: ");
 
-    int* sutdents_array = (int*)calloc(student_amount, sizeof(int));
+    int* students_array = (int*)calloc(student_amount, sizeof(int));
     for (int i = 0; i < student_amount; i++)
     {
-        sutdents_array[i] = -1;
+        students_array[i] = -1;
     }
 
     int student_number = -1;
-    while (student_number != 0)
+    while (true)
     {
         if (student_number == -1)
         {
@@ -21,6 +22,8 @@ int main(void)
             sprintf(student_number_q, "\nEnter student number (1 - %d) or 0 to stop: ", student_amount);
 
             student_number = validate_int_input(student_number_q);
+
+            if (student_number == 0) { break; }
 
             if (student_number > student_amount || student_number < 0)
             {
@@ -40,13 +43,22 @@ int main(void)
             continue;
         }
 
-        
-
-
+        students_array[student_number - 1] = student_grade;
+        student_number = -1;
     }
-    
 
-
+    printf("\n%-10s %s\n", "Student", "Grade");
+    for (int i = 0; i < student_amount; i++)
+    {
+        if (students_array[i] < 0)
+        {
+            printf("%-10d %s\n", i+1, "N/A");
+        }
+        else
+        {
+            printf("%-10d %d\n", i+1, students_array[i]);
+        }
+    }
 
     return 0;
 }
