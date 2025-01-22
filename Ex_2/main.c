@@ -19,12 +19,13 @@ int main(void)
         income[i] = validate_float_input(message);
     }
 
-    char headers[3][7] = { "month", "income", "tax" };
-    printf("%-12s%-12s %s\n", headers[0], headers[1], headers[2]);
+    float yearly_income = 0;
 
+    printf("%-12s%-12s %s\n", "month", "income", "tax");
     for (int i = 0; i < INCOME_ARRAY_SIZE; i++)
     {
-        float tax = income[i] > income_limit
+        yearly_income += income[i];
+        float tax = yearly_income > income_limit
             ? income[i] * (tax_rate_over_income_limit / 100)
             : income[i] * (tax_rate / 100);
 
