@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include "../utils.h"
 
-#define INCOME_ARRAY_SIZE 12
-
 int main(void)
 {
+    const int INCOME_ARRAY_SIZE = 12;
+
     float income[INCOME_ARRAY_SIZE];
 
     float tax_rate = validate_float_input("Enter tax rate: ");
