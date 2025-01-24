@@ -44,4 +44,5 @@ int main(void)
 
     printf("You entered %d positive numbers. The average is: %.2f\n", arr_size, sum / (float)(arr_size));
     
+    return 0;
 }

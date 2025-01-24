@@ -37,4 +37,5 @@ int main(void)
 
     printf("Better luck next time. Bye!\n");
     
+    return 0;
 }
