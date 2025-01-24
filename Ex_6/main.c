@@ -6,9 +6,9 @@
 
 int roll_dice(int max)
 {
-    unsigned int seed = time(0);
-    int min = 1;
-    return rand_r(&seed) % (max - min + 1) + min;
+    srand(time(NULL));
+    const int min = 1;
+    return (rand() % (max - min + 1)) + min;
 }
 
 int main(void)
