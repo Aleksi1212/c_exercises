@@ -17,7 +17,7 @@ int main(void)
                         "(1) Roll D6\n"
                         "(2) Roll D10\n"
                         "(3) Quit\n"
-                        "Enter opertaion (1 - 3): ";
+                        "Enter operation (1 - 3): ";
 
     while(true)
     {
