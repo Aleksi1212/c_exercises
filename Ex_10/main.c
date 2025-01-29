@@ -12,6 +12,11 @@ int main(void)
         printf("Enter string: ");
         fgets(user_input, sizeof(user_input), stdin);
 
+        if (strchr(user_input, '\n') == NULL)
+        {
+            while (getchar() != '\n');
+        }
+
         size_t len = strlen(user_input);
 
         if (len > 0 && user_input[len - 1] == '\n')
