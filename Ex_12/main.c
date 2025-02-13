@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include "../utils.h"
 
 int count_words(const char* str, const char *word)
 {
@@ -18,22 +19,6 @@ int count_words(const char* str, const char *word)
     return count;
 }
 
-void validate_char(const char* message, char* string, int maxLen)
-{
-    do
-    {
-        printf("%s\n", message);
-        fgets(string, maxLen, stdin);
-
-        size_t len = strlen(string);
-        if (len > 0 && string[len - 1] == '\n')
-        {
-            string[len - 1] = '\0';
-        }
-    } while (strlen(string) == 0);
-    
-}
-
 int main(void)
 {
     
@@ -42,8 +27,8 @@ int main(void)
         char string[100];
         char word[100];
 
-        validate_char("Give a string", string, sizeof(string));
-        validate_char("Give a word to find in the string", word, sizeof(word));
+        validate_char_input("Give a string", string, sizeof(string));
+        validate_char_input("Give a word to find in the string", word, sizeof(word));
 
         if (strcmp(word, "stop") == 0)
         {
@@ -53,9 +38,9 @@ int main(void)
 
         int count = count_words(string, word);
         if (count > 0)
-            printf("Found %d instances of %s in the string\n", count, word);
+            printf("Found %d instances of %s in the string\n\n", count, word);
         else
-            printf("%s was not found in the string\n", word);
+            printf("%s was not found in the string\n\n", word);
 
     }
 
