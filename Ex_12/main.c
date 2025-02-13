@@ -18,18 +18,20 @@ int count_words(const char* str, const char *word)
     return count;
 }
 
-char *validate_char(const char* message, char* string)
-{    
-    printf("%s\n", message);
-    fgets(string, sizeof(string), stdin);
-
-    while (string[0] == '\n')
+void validate_char(const char* message, char* string, int maxLen)
+{
+    do
     {
         printf("%s\n", message);
-        fgets(string, sizeof(string), stdin);
-    }
-    while (getchar() != '\n');
-    string[strcspn(string, "\n")] = 0;
+        fgets(string, maxLen, stdin);
+
+        size_t len = strlen(string);
+        if (len > 0 && string[len - 1] == '\n')
+        {
+            string[len - 1] = '\0';
+        }
+    } while (strlen(string) == 0);
+    
 }
 
 int main(void)
@@ -40,8 +42,8 @@ int main(void)
         char string[100];
         char word[100];
 
-        validate_char("Give a string", string);
-        validate_char("Give a word to find in the string", word);
+        validate_char("Give a string", string, sizeof(string));
+        validate_char("Give a word to find in the string", word, sizeof(word));
 
         if (strcmp(word, "stop") == 0)
         {
