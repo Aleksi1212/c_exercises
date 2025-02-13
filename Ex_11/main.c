@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include "../utils.h"
 
 int replace_char(char *str, const char *repl)
 {
@@ -24,8 +25,13 @@ int replace_char(char *str, const char *repl)
 
 int main(void)
 {
-    char text[80] = "I am so tired of Python. C is much better language";
-    int count = replace_char(text, "e3");
+    char string[100];
+    char substr[3];
+
+    validate_char_input("Enter a string:", string, sizeof(string));
+    validate_char_input("Enter a substring of length 2:", substr, sizeof(substr));
+
+    int count = replace_char(string, substr);
 
     if (count > 0)
         printf("%d\n", count);
