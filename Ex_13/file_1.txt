@@ -8,3 +8,8 @@
 8
 9
 10
+NaN
+number
+11
+12number
+thirteen13
