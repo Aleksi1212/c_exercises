@@ -61,6 +61,7 @@ int main(void)
         fprintf(write_ptr, "%s\n", lines_arr[i]);
     }
     fclose(write_ptr);
+    printf("Success!!!\n");
 
     return 0;
 }
