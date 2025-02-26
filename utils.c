@@ -34,18 +34,21 @@ int validate_int_input(const char *message)
     return output;
 }
 
+void remove_new_line(char *str)
+{
+    size_t len = strlen(str);
+    if (len > 0 && str[len - 1] == '\n')
+    {
+        str[len - 1] = '\0';
+    }
+}
+
 void validate_char_input(const char *message, char *string, int maxLen)
 {
     do
     {
         printf("%s\n", message);
         fgets(string, maxLen, stdin);
-
-        size_t len = strlen(string);
-        if (len > 0 && string[len - 1] == '\n')
-        {
-            string[len - 1] = '\0';
-        }
+        remove_new_line(string);
     } while (strlen(string) == 0);
-    
 }
