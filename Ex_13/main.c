@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include <limits.h>
 #include "../utils.h"
 
@@ -29,6 +30,10 @@ int main(void)
     while (fgets(file_content, 100, file_ptr))
     {
         remove_new_line(file_content);
+
+        if (!isdigit(*file_content)) {
+            continue;
+        }
         
         int number = atoi(file_content);
         number_count++;
