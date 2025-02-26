@@ -26,8 +26,8 @@ int main(void)
     int smallest_number = INT_MAX;
     int number_count = 0;
 
-    char file_content[sizeof(INT_MAX)];
-    while (fgets(file_content, sizeof(INT_MAX), file_ptr))
+    char file_content[100];
+    while (fgets(file_content, 100, file_ptr))
     {
         remove_new_line(file_content);
 
