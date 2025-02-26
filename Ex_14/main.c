@@ -28,7 +28,7 @@ int main(void)
     char line[1000];
     
     int num = 0;
-    while (fgets(line, 1000, read_ptr) && num <= 100)
+    while (fgets(line, 1000, read_ptr) && num <= ARRAY_SIZE)
     {
         remove_new_line(line);
 
