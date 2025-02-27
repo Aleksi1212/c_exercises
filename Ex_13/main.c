@@ -10,7 +10,13 @@ int main(void)
     char file_path[] = "Ex_13/";
     char file_name[100];
 
-    validate_char_input("Give a file name", file_name, sizeof(file_name));
+    while (1)
+    {
+        validate_char_input("Give a file name", file_name, sizeof(file_name));
+        if (is_file_extension(file_name, ".txt"))
+            break;
+        printf("Must be a .txt file.\n");
+    }
     strcat(file_path, file_name);
 
     FILE *file_ptr;
