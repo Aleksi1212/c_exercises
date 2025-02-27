@@ -52,3 +52,10 @@ void validate_char_input(const char *message, char *string, int maxLen)
         remove_new_line(string);
     } while (strlen(string) == 0);
 }
+
+int is_file_extension(const char *file_name, const char *extension)
+{
+    const char *ext = strrchr(file_name, '.');
+
+    return ext != NULL && strcmp(ext, extension) == 0;
+}
