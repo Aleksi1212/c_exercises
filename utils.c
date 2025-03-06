@@ -47,7 +47,7 @@ void validate_char_input(const char *message, char *string, int maxLen)
 {
     do
     {
-        printf("%s\n", message);
+        printf("%s", message);
         fgets(string, maxLen, stdin);
         remove_new_line(string);
     } while (strlen(string) == 0);
