@@ -19,7 +19,7 @@ int main(void)
 
     while (1)
     {
-        validate_char_input("Give a file name", file_name, sizeof(file_name));
+        validate_char_input("Give a file name: ", file_name, sizeof(file_name));
         if (is_file_extension(file_name, ".txt"))
             break;
         printf("Must be a .txt file.\n");
