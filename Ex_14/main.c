@@ -14,7 +14,7 @@ int main(void)
 
     while (1)
     {
-        validate_char_input("Give a file name", file_name, sizeof(file_name));
+        validate_char_input("Give a file name: ", file_name, sizeof(file_name));
         if (is_file_extension(file_name, ".txt"))
             break;
         printf("Must be a .txt file.\n");
@@ -59,6 +59,7 @@ int main(void)
     if (write_ptr == NULL)
     {
         fprintf(stderr, "Error opening file: %s\n", file_path);
+        free(lines_arr);
         return 1;
     }
 
@@ -67,7 +68,9 @@ int main(void)
         fprintf(write_ptr, "%s\n", lines_arr[i]);
     }
     fclose(write_ptr);
+    free(lines_arr);
     printf("Success!!!\n");
+
 
     return 0;
 }

@@ -29,10 +29,33 @@ void add_node(struct node** head, int number)
     prev_node->next = new_node;
 }
 
+int is_valid_number(char *str)
+{
+    if (str[0] == '-' && strlen(str) > 1) {
+        str++;
+    }
+    while (*str) {
+        if (!isdigit(*str)) {
+            return 0;
+        }
+        str++;
+    }
+    return 1;
+}
+
+void free_list(struct node* head)
+{
+    struct node* temp;
+    while (head != NULL) {
+        temp = head;
+        head = head->next;
+        free(temp);
+    }
+}
+
 int main(void)
 {
     char number_str[100];
-
     struct node *linked_list = NULL;
 
     while (1)
@@ -42,7 +65,7 @@ int main(void)
         if (strcmp(number_str, "end") == 0)
             break;
 
-        if (!isdigit(*number_str))
+        if (!is_valid_number(number_str))
         {
             printf("Invalid input\n");
             continue;
@@ -50,17 +73,18 @@ int main(void)
         else
         {
             add_node(&linked_list, atoi(number_str));
-            printf("Succesfully added.\n");
+            printf("Successfully added.\n");
         }
     }
 
-    while (linked_list != NULL)
+    struct node *current_node = linked_list;
+    while (current_node != NULL)
     {
-        printf("%d\n", linked_list->number);
-        linked_list = linked_list->next;
+        printf("%d\n", current_node->number);
+        current_node = current_node->next;
     }
-    free(linked_list);
-    
+
+    free_list(linked_list);
 
     return 0;
 }
